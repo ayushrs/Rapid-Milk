@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rapid</title>
+    <!-- Google Fonts -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css">
+    <!-- GSAP Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+
+
+</head>
+
+<body>
+    <!-- Header Section -->
+    <nav class="navbar navbar-expand-lg navbar-dark naves">
+        <div class="container-fluid">
+            <div class="head_content fluxx">
+                <a class="navbar-brand" href="index.html">Rapid Milk</a>
+                
+                <div class="loggs_buttns">
+                    <!-- In your header navigation, e.g., next to the Login/Signup button -->
+                    <div class="d-flex align-items-center">
+                        <button class="btn btn-outline-light me-2 d-none d-lg-block" data-bs-toggle="offcanvas"
+                            data-bs-target="#cartSidebar" aria-controls="cartSidebar">
+                            <i class="bi bi-cart"></i> Cart
+                        </button>
+                        <button class="btn-light btn-login" onclick="openLoginModal()">Login/Signup</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Login/Signup Modal with Integrated Login Functionality -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeLoginModal()">&times;</span>
+            <div class="container">
+                <!-- Step 1: Enter Mobile Number -->
+                <div class="step active" id="step1">
+                    <h1>Welcome to
+                        <br> Rapid Milk 🐄
+                    </h1>
+                    <div class="form-group">
+                        <input type="tel" id="mobile" placeholder="Enter Mobile Number" maxlength="10" />
+                    </div>
+                    <button class="btn" onclick="sendOTP()">Send OTP</button>
+                </div>
+                <!-- Step 2: Verify OTP -->
+                <div class="step" id="step2">
+                    <h1>Verify OTP 🔒</h1>
+                    <div class="otp-inputs">
+                        <input type="text" maxlength="1" oninput="moveNext(1)" />
+                        <input type="text" maxlength="1" oninput="moveNext(2)" />
+                        <input type="text" maxlength="1" oninput="moveNext(3)" />
+                        <input type="text" maxlength="1" oninput="moveNext(4)" />
+                    </div>
+                    <button class="btn" onclick="verifyOTP()">Verify</button>
+                </div>
+                <!-- Step 3: Complete Profile -->
+                <div class="step" id="step3">
+                    <h1>Complete Profile 👤</h1>
+                    <div class="form-group">
+                        <input type="text" id="name" placeholder="Full Name" />
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" placeholder="Email Address" />
+                    </div>
+                    <button class="btn" onclick="submitDetails()">Continue</button>
+                </div>
+                <!-- Step 4: Products List (Optional) -->
+                <div class="step" id="step4">
+                    <h1>Fresh Products 🥦</h1>
+                    <div class="products-grid" id="productsGrid"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="cartSidebar" aria-labelledby="cartSidebarLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="cartSidebarLabel">Your Cart</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <!-- Cart Items -->
+            <div id="cartItems">
+                <!-- Example Cart Item -->
+                <div class="d-flex align-items-center mb-3 border-bottom pb-2">
+                    <img src="images/LowCreamMilk(MadeFrombuffaloMilk).jpeg_1719231543883.jpeg" alt="Product"
+                        class="me-2" style="width: 50px; height: 50px;">
+                    <div class="flex-grow-1">
+                        <h6 class="mb-0">Product Name</h6>
+                        <small>$19.99</small>
+                    </div>
+                    <button class="btn btn-sm btn-danger ms-2">&times;</button>
+                </div>
+                <!-- Repeat for other items as needed -->
+            </div>
+            <!-- Cart Summary -->
+            <div class="mt-4">
+                <h6>Total: <span id="cartTotal">$0.00</span></h6>
+                <button class="btn btn-primary w-100">Checkout</button>
+            </div>
+        </div>
+    </div>
+    <!-- Home Page -->
+    <section class="prodd_page">
+        <div class="comp-container">
+            <div class="row">
+                <div class="col-lg-2 left-section">
+                    <div class="side_cates">
+                        <ul class="category list-unstyled">
+                            <li>
+                                <div class="first_catts">
+                                    <div class="frst_maze">
+                                        <img class="vap_mf" src="https://cdn.grofers.com/app/images/category/cms_images/icon/922_1643384380004.png" alt="">
+                                    </div>
+                                    <div class="frst_ttle">
+                                        <span>Milk</span>
+                                    </div>      
+                                </div>
+                            </li>
+                            <li>
+                                <div class="first_catts">
+                                    <div class="frst_maze">
+                                        <img class="vap_mf" src="https://cdn.grofers.com/app/images/category/cms_images/icon/953_1657599742631.png" alt="">
+                                    </div>
+                                    <div class="frst_ttle">
+                                        <span>Bread</span>
+                                    </div>      
+                                </div>
+                            </li>
+                            <li>
+                                <div class="first_catts">
+                                    <div class="frst_maze">
+                                        <img class="vap_mf" src="https://cdn.grofers.com/app/images/category/cms_images/icon/1200_1657599895699.png" alt="">
+                                    </div>
+                                    <div class="frst_ttle">
+                                        <span>flakes</span>
+                                    </div>      
+                                </div>
+                            </li>
+                            <li>
+                                <div class="first_catts">
+                                    <div class="frst_maze">
+                                        <img class="vap_mf" src="https://cdn.grofers.com/app/images/category/cms_images/icon/954_1680251634382.png" alt="">
+                                    </div>
+                                    <div class="frst_ttle">
+                                        <span>Muesli</span>
+                                    </div>      
+                                </div>
+                            </li>
+                            <li>
+                                <div class="first_catts">
+                                    <div class="frst_maze">
+                                        <img class="vap_mf" src="https://cdn.grofers.com/app/images/category/cms_images/icon/614_1680251576771.png" alt="">
+                                    </div>
+                                    <div class="frst_ttle">
+                                        <span>Oats</span>
+                                    </div>      
+                                </div>
+                            </li>
+                            <li>
+                                <div class="first_catts">
+                                    <div class="frst_maze">
+                                        <img class="vap_mf" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/app/images/category/cms_images/icon/923_1643384369257.png" alt="">
+                                    </div>
+                                    <div class="frst_ttle">
+                                        <span>Tofu</span>
+                                    </div>      
+                                </div>
+                            </li>
+                            <li>
+                                <div class="first_catts">
+                                    <div class="frst_maze">
+                                        <img class="vap_mf" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/app/images/category/cms_images/icon/123_1643384414434.png" alt="">
+                                    </div>
+                                    <div class="frst_ttle">
+                                        <span>Curd</span>
+                                    </div>      
+                                </div>
+                            </li>
+                            <li>
+                                <div class="first_catts">
+                                    <div class="frst_maze">
+                                        <img class="vap_mf" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/app/images/category/cms_images/icon/952_1657599773117.png" alt="">
+                                    </div>
+                                    <div class="frst_ttle">
+                                        <span>Butter</span>
+                                    </div>      
+                                </div>
+                            </li>
+                            <li>
+                                <div class="first_catts">
+                                    <div class="frst_maze">
+                                        <img class="vap_mf" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/app/images/category/cms_images/icon/2253_1694001802103.png" alt="">
+                                    </div>
+                                    <div class="frst_ttle">
+                                        <span>Cheese</span>
+                                    </div>      
+                                </div>
+                            </li>
+                            <li>
+                                <div class="first_catts">
+                                    <div class="frst_maze">
+                                        <img class="vap_mf" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/app/images/category/cms_images/icon/130_1643384401123.png" alt="">
+                                    </div>
+                                    <div class="frst_ttle">
+                                        <span>Condensed Milk</span>
+                                    </div>      
+                                </div>
+                            </li>
+                            <li>
+                                <div class="first_catts">
+                                    <div class="frst_maze">
+                                        <img class="vap_mf" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/app/images/category/cms_images/icon/1140_1643384951835.png" alt="">
+                                    </div>
+                                    <div class="frst_ttle">
+                                        <span>Vermacili</span>
+                                    </div>      
+                                </div>
+                            </li>
+                            <li>
+                                <div class="first_catts">
+                                    <div class="frst_maze">
+                                        <img class="vap_mf" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/app/images/category/cms_images/icon/1295_1643445863467.png" alt="">
+                                    </div>
+                                    <div class="frst_ttle">
+                                        <span>Poha</span>
+                                    </div>      
+                                </div>
+                            </li>
+                            <li>
+                                <div class="first_catts">
+                                    <div class="frst_maze">
+                                        <img class="vap_mf" src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/app/images/category/cms_images/icon/644_1690196367179.png" alt="">
+                                    </div>
+                                    <div class="frst_ttle">
+                                        <span>Peanut Butter</span>
+                                    </div>      
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-10 right-section">
+                    <div class="row mb-2">
+                        <!-- Category 1 -->
+                        <div class="col-lg-4">
+                            <div class="card">
+                                <a href="product-detail.html">
+                                  <img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/da/cms-assets/cms/product/94405525-eed3-4c5a-91c4-05d714f14db1.jpg?ts=1732699330" alt="Product 2">
+                                </a>
+                                <p><strong>Product 2</strong></p>
+                                <div class="ad">
+                                  <p>$19.99</p>
+                                  <div class="couters">
+                                  <div class="couters">
+                                  <button class="add-button">Add</button>
+                        <div class="quantity-controls">
+                            <button class="quantity-btn minus-btn">-</button>
+                            <span class="count">1</span>
+                            <button class="quantity-btn plus-btn">+</button>
+                        </div>
+                      </div>
+                      </div>
+                                </div>
+                              </div>
+                        </div>
+                        <!-- Category 2 -->
+                        <div class="col-lg-4">
+                            <div class="card">
+                                <a href="product-detail.html">
+                                  <img src="images/BANANA-PDP.jpg_1723792764773.jpg" alt="Product 2">
+                                </a>
+                                <p><strong>Product 2</strong></p>
+                                <div class="ad">
+                                  <p>$19.99</p>
+                                  <div class="couters">
+                                  <div class="couters">
+                                  <button class="add-button">Add</button>
+                        <div class="quantity-controls">
+                            <button class="quantity-btn minus-btn">-</button>
+                            <span class="count">1</span>
+                            <button class="quantity-btn plus-btn">+</button>
+                        </div>
+                      </div>
+                      </div>
+                                </div>
+                              </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="card">
+                                <a href="product-detail.html">
+                                  <img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/app/assets/products/sliding_images/jpeg/cc1099ae-522d-47ab-b897-c10310511c9f.jpg?ts=1712325561" alt="Product 2">
+                                </a>
+                                <p><strong>Product 2</strong></p>
+                                <div class="ad">
+                                  <p>$19.99</p>
+                                  <div class="couters">
+                                  <div class="couters">
+                                  <button class="add-button">Add</button>
+                        <div class="quantity-controls">
+                            <button class="quantity-btn minus-btn">-</button>
+                            <span class="count">1</span>
+                            <button class="quantity-btn plus-btn">+</button>
+                        </div>
+                      </div>
+                      </div>
+                                </div>
+                              </div>
+                        </div>
+                    </div>
+                        <!-- Category 3 -->
+                         <div class="row">
+
+                        <div class="col-lg-4">
+                            <div class="card">
+                                <a href="product-detail.html">
+                                  <img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/app/assets/products/sliding_images/jpeg/600dd9ff-659c-4817-87e7-eec1dea72c63.jpg?ts=1706182144" alt="Product 2">
+                                </a>
+                                <p><strong>Product 2</strong></p>
+                                <div class="ad">
+                                  <p>$19.99</p>
+                                  <div class="couters">
+                                  <div class="couters">
+                                  <button class="add-button">Add</button>
+                        <div class="quantity-controls">
+                            <button class="quantity-btn minus-btn">-</button>
+                            <span class="count">1</span>
+                            <button class="quantity-btn plus-btn">+</button>
+                        </div>
+                      </div>
+                      </div>
+                                </div>
+                              </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="card">
+                                <a href="product-detail.html">
+                                  <img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/app/images/products/sliding_image/3471a.jpg?ts=1703942181" alt="Product 2">
+                                </a>
+                                <p><strong>Product 2</strong></p>
+                                <div class="ad">
+                                  <p>$19.99</p>
+                                  <div class="couters">
+                                  <div class="couters">
+                                  <button class="add-button">Add</button>
+                        <div class="quantity-controls">
+                            <button class="quantity-btn minus-btn">-</button>
+                            <span class="count">1</span>
+                            <button class="quantity-btn plus-btn">+</button>
+                        </div>
+                      </div>
+                      </div>
+                                </div>
+                              </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="card">
+                                <a href="product-detail.html">
+                                  <img src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=270/app/assets/products/sliding_images/jpeg/6d41a6e4-eb1b-413c-8e20-7b9e892e42f8.jpg?ts=1712325555" alt="Product 2">
+                                </a>
+                                <p><strong>Product 2</strong></p>
+                                <div class="ad">
+                                  <p>$19.99</p>
+                                  <div class="couters">
+                                  <div class="couters">
+                                  <button class="add-button">Add</button>
+                        <div class="quantity-controls">
+                            <button class="quantity-btn minus-btn">-</button>
+                            <span class="count">1</span>
+                            <button class="quantity-btn plus-btn">+</button>
+                        </div>
+                      </div>
+                      </div>
+                                </div>
+                              </div>
+                        </div> 
+                         </div>
+   
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="foot_cart d-lg-none" data-bs-toggle="offcanvas"
+    data-bs-target="#cartSidebar" aria-controls="cartSidebar">
+        <div class="up_foot">
+            <div class="dala_ppyl">
+                <button class="btn btn-outline-light me-2" >
+                                <i class="bi bi-cart"></i> Cart
+            </button>
+            <div class="bani_runn"> 
+                <span>1 itme</span>      
+                <span>₹ 50</span>  
+            </div> 
+            </div> 
+            <div class="call_side">
+                <p>View Cart</p>
+            </div>
+        </div>
+    </div>
+    <!-- Cart Offcanvas Sidebar -->
+    
+
+    <div class="foot_cart d-lg-none" data-bs-toggle="offcanvas"
+    data-bs-target="#cartSidebar" aria-controls="cartSidebar">
+        <div class="up_foot">
+            <div class="dala_ppyl">
+                <button class="btn btn-outline-light me-2" >
+                                <i class="bi bi-cart"></i> Cart
+            </button>
+            <div class="bani_runn"> 
+                <span>1 itme</span>      
+                <span>₹ 50</span>  
+            </div> 
+            </div> 
+            <div class="call_side">
+                <p>View Cart</p>
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2023 Milk Company. All rights reserved.</p>
+        <ul>
+            <li><a href="#terms">Terms & Conditions</a></li>
+            <li><a href="#privacy">Privacy Policy</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+        </ul>
+    </footer>
+
+    <!-- Login Functionality Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>

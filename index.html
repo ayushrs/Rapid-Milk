@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rapid</title>
+  <!-- Google Fonts -->
+  <link
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+  rel="stylesheet"
+/>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css">
+  <!-- GSAP Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <link rel="stylesheet" href="styles.css">
+
+
+</head>
+<body>
+  <!-- Header Section -->
+  <nav class="navbar navbar-expand-lg navbar-dark naves">
+    <div class="container-fluid">
+      <div class="head_content fluxx">
+        <a class="navbar-brand" href="index.html">Rapid Milk</a>
+      
+      </button>
+      <div class="address_menu">
+        <h4 class="jag_rit">Delivery In</h4>
+        <div class="truncate-text" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <span class="nii_mantri" >66, shri ram colony jamdoli haipur name and the local server is the name and the local server and the name nad the local server</span>
+            <span _ngcontent-lua-c47="" id="triangle-up"></span>
+        </div>
+    </div>
+      <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+        
+        
+        
+      </div>
+      <div class="loggs_buttns">
+        <!-- In your header navigation, e.g., next to the Login/Signup button -->
+<div class="d-flex align-items-center">
+  <button class="btn btn-outline-light me-2 d-none d-lg-block" data-bs-toggle="offcanvas" data-bs-target="#cartSidebar" aria-controls="cartSidebar">
+    <i class="bi bi-cart"></i> Cart
+  </button>
+  <button class="btn-light btn-login" onclick="openLoginModal()">Login/Signup</button>
+</div>
+
+      </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Login/Signup Modal with Integrated Login Functionality -->
+  <div id="loginModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeLoginModal()">&times;</span>
+      <div class="container">
+        <!-- Step 1: Enter Mobile Number -->
+        <div class="step active" id="step1">
+          <h1>Welcome to
+            <br> Rapid Milk 🐄</h1>
+          <div class="form-group">
+            <input type="tel" id="mobile" placeholder="Enter Mobile Number" maxlength="10" />
+          </div>
+          <button class="btn" onclick="sendOTP()">Send OTP</button>
+        </div>
+        <!-- Step 2: Verify OTP -->
+        <div class="step" id="step2">
+          <h1>Verify OTP 🔒</h1>
+          <div class="otp-inputs">
+            <input type="text" maxlength="1" oninput="moveNext(1)" />
+            <input type="text" maxlength="1" oninput="moveNext(2)" />
+            <input type="text" maxlength="1" oninput="moveNext(3)" />
+            <input type="text" maxlength="1" oninput="moveNext(4)" />
+          </div>
+          <button class="btn" onclick="verifyOTP()">Verify</button>
+        </div>
+        <!-- Step 3: Complete Profile -->
+        <div class="step" id="step3">
+          <h1>Complete Profile 👤</h1>
+          <div class="form-group">
+            <input type="text" id="name" placeholder="Full Name" />
+          </div>
+          <div class="form-group">
+            <input type="email" id="email" placeholder="Email Address" />
+          </div>
+          <button class="btn" onclick="submitDetails()">Continue</button>
+        </div>
+        <!-- Step 4: Products List (Optional) -->
+        <div class="step" id="step4">
+          <h1>Fresh Products 🥦</h1>
+          <div class="products-grid" id="productsGrid"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="cartSidebar" aria-labelledby="cartSidebarLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="cartSidebarLabel">Your Cart</h5>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <!-- Cart Items -->
+      <div id="cartItems">
+        <!-- Example Cart Item -->
+        <div class="d-flex align-items-center mb-3 border-bottom pb-2">
+          <img src="images/LowCreamMilk(MadeFrombuffaloMilk).jpeg_1719231543883.jpeg" alt="Product" class="me-2" style="width: 50px; height: 50px;">
+          <div class="flex-grow-1">
+            <h6 class="mb-0">Product Name</h6>
+            <small>$19.99</small>
+          </div>
+          <div class="couters">
+            <button class="add-button">Add</button>
+  <div class="quantity-controls">
+      <button class="quantity-btn minus-btn">-</button>
+      <span class="count">1</span>
+      <button class="quantity-btn plus-btn">+</button>
+  </div>
+  </div>
+          <button class="btn btn-sm btn-danger ms-2">&times;</button>
+        </div>
+        <div class="d-flex align-items-center mb-3 border-bottom pb-2">
+          <img src="images/LowCreamMilk(MadeFrombuffaloMilk).jpeg_1719231543883.jpeg" alt="Product" class="me-2" style="width: 50px; height: 50px;">
+          <div class="flex-grow-1">
+            <h6 class="mb-0">Product Name</h6>
+            <small>$19.99</small>
+          </div>
+          <div class="couters">
+            <button class="add-button">Add</button>
+  <div class="quantity-controls">
+      <button class="quantity-btn minus-btn">-</button>
+      <span class="count">1</span>
+      <button class="quantity-btn plus-btn">+</button>
+  </div>
+  </div>
+          <button class="btn btn-sm btn-danger ms-2">&times;</button>
+        </div>
+        <!-- Repeat for other items as needed -->
+      </div>
+      <!-- Cart Summary -->
+      <div class="addser">
+        <img src="images/light.webp" alt="">
+        <div class="plac">
+          <h6>Home</h6>
+          <p class="hppBoz">66. shri ram colony, Jamdoli Jaipur</p>
+          <div class="AddressListItem__EditIcon-sc-wi2msz-7 eiUMmD" data-bs-toggle="modal" data-bs-target="#secoundModal"></div>
+        </div>
+      </div>
+      <div class="mt-4">
+        <h6>Total: <span id="cartTotal">₹200.00</span></h6>
+        <a href="checkout.html">
+        <button class="btn btn-primary w-100">Checkout</button>
+          </a>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ///////////////Address modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Address</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="saved_Address">
+            <h4>
+              Your saved address
+            </h4>
+            <div class="addser">
+              <img src="images/light.webp" alt="">
+              <div class="plac">
+                <h6>Home</h6>
+                <p class="hppBoz">66. shri ram colony, Jamdoli Jaipur</p>
+                <div class="AddressListItem__EditIcon-sc-wi2msz-7 eiUMmD" data-bs-toggle="modal" data-bs-target="#secoundModal"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>  
+  
+  <div class="modal fade" id="secoundModal" tabindex="-1" aria-labelledby="secoundModalLabel" aria-hidden="true">
+    <div class="modal-dialog custom-modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="secoundModalLabel">Details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="new_">
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="panch_map">
+                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4220.818330232517!2d75.77053207597118!3d26.894767860860487!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396db46813611413%3A0xd1fce493da88b6e4!2sFineoutput!5e1!3m2!1sen!2sin!4v1738664791749!5m2!1sen!2sin" style="border:0; height: 100%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <span>
+                  Enter complete address
+                </span>
+                <div class="inside_frm">
+                  <form action="#">
+                    <div class="form-group venum">
+                      <label for="flat" class="ioloWN">
+                        Flat / House no. / Building Name
+                      </label>
+                      <input type="number" placeholder="">
+                      <label for="floor" class="ioloWN">
+                        Floor (optional)
+                      </label>
+                      <input type="number" placeholder="">
+                      <label for="area" class="ioloWN">
+                        Area / Sector / Locality
+                      </label>
+                      <input type="number" placeholder="">
+                      <label for="name" class="ioloWN">
+                        Name
+                      </label>
+                      <input type="text" placeholder="">
+                      <label for="number" class="ioloWN">
+                        Mobile Number
+                      </label>
+                      <input type="number" placeholder="">
+                      <div class="save_btns">
+                        <button type="button" class="btn btn-sucess anit mt-3">
+                          Save Address
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>  
+  <!-- //////////////////////Header Ends -->
+  <!-- Home Page -->
+  <section id="home" class="mt-5">
+    <div class="comp-container ">
+      <div class="sliider">
+        <div class="splide" id="my-slider">
+          <div class="splide__track">
+            <ul class="splide__list">
+              <li class="splide__slide">
+                <img src="images/4PE4WEBSITEHEROBANNER.jpg_1724396937712.jpg" alt="Slide 1">
+              </li>
+              <li class="splide__slide">
+                <img src="images/4PE4WEBSITEHEROBANNER.jpg_1724396937712.jpg" alt="Slide 2">
+              </li>
+              <li class="splide__slide">
+                <img src="images/4PE4WEBSITEHEROBANNER.jpg_1724396937712.jpg" alt="Slide 3">
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+  
+    <div class="categories mt-5">
+      <h2 class="cat_head">Categories</h2>
+      <div class="row row-cols-4 row-cols-lg-8 g-3">
+        <!-- Category 1 -->
+        <div class="col">
+          <div class="category-card">
+            <a href="products.html">
+            <img src="images/MILK&COCONUTWATER.png_1722842816905.png" alt="Category 1" />
+            <p class="mt-2 mb-0">Fresh Milk</p>
+          </a>
+          </div>
+        </div>
+        <!-- Category 2 -->
+        <div class="col">
+          <div class="category-card">
+            <a href="products.html">
+            <img src="images/atta_1704099152394.png" alt="Category 2" />
+            <p class="mt-2 mb-0">Aata and Rice</p>
+              </a>
+          </div>
+        </div>
+        <!-- Category 3 -->
+        <div class="col">
+          <div class="category-card">
+            <a href="products.html">
+            <img src="images/MILKPRODUCT.png_1722842949438.png" alt="Category 3" />
+            <p class="mt-2 mb-0">Milk Products</p>
+          </a>
+          </div>
+        </div>
+        <!-- Category 4 -->
+        <div class="col">
+          <div class="category-card">
+            <a href="products.html">
+            <img src="images/FRESHFRUITS.png_1722842972313.png" alt="Category 4" />
+            <p class="mt-2 mb-0">Fresh Fruits</p>
+          </a>
+          </div>
+        </div>
+        <!-- Category 5 -->
+        <div class="col">
+          <div class="category-card">
+            <a href="products.html">
+            <img src="images/DRYFRUITS&SEEDS.png_1722842929886.png" alt="Category 5" />
+            <p class="mt-2 mb-0">Dry Fruits and seeds</p>
+          </a>
+          </div>
+        </div>
+        <!-- Category 6 -->
+        <div class="col">
+          <div class="category-card">
+            <a href="products.html">
+            <img src="images/BREAD.png_1722842960673.png" alt="Category 6" />
+            <p class="mt-2 mb-0">Bread</p>
+          </a>
+          </div>
+        </div>
+        <!-- Category 7 -->
+        <div class="col">
+          <div class="category-card">
+            <a href="products.html">
+            <img src="images/category icon_1702015014748.png" alt="Category 7" />
+            <p class="mt-2 mb-0">Salt and Sugars</p>
+          </a>
+          </div>
+        </div>
+        <div class="col">
+          <div class="category-card">
+            <a href="products.html">
+            <img src="images/DAL&PULSES.png_1722842916152.png" alt="Category 8" />
+            <p class="mt-2 mb-0">Daal and Pulses</p>
+          </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    
+  </div>
+  </section>
+
+
+  <section class="comp-container">
+    <section class="slider-container">
+      <h2>Hot Deals Products</h2>
+      <!-- Splide Slider Markup -->
+      <div class="splide name_slifer" id="splide-slider">
+        <div class="splide__track">
+          <ul class="splide__list">
+            <!-- Product 1 -->
+            <li class="splide__slide">
+              <div class="card">
+                <a href="#">
+                  <img src="images/green_chilli.png" alt="Product 1">
+                </a>
+                <p><strong>Product 1</strong></p>
+                <p>$19.99</p>
+              </div>
+            </li>
+            <!-- Product 2 -->
+            <li class="splide__slide">
+              <div class="card">
+                <a href="#">
+                  <img src="images/BANANA-PDP.jpg_1723792764773.jpg" alt="Product 2">
+                </a>
+                <p><strong>Product 2</strong></p>
+                <p>$29.99</p>
+              </div>
+            </li>
+            <!-- Product 3 -->
+            <li class="splide__slide">
+              <div class="card">
+                <a href="#">
+                  <img src="images/LowCreamMilk(MadeFrombuffaloMilk).jpeg_1719231543883.jpeg" alt="Product 3">
+                </a>
+                <p><strong>Product 3</strong></p>
+                <p>$39.99</p>
+              </div>
+            </li>
+            <!-- Product 4 -->
+            <li class="splide__slide">
+              <div class="card">
+                <a href="#">
+                  <img src="images/NMR honey 450 - PDP.jpg" alt="Product 4">
+                </a>
+                <p><strong>Product 4</strong></p>
+                <p>$49.99</p>
+              </div>
+            </li>
+            <!-- Product 5 -->
+            <li class="splide__slide">
+              <div class="card">
+                <a href="#">
+                  <img src="images/Carrot-Red-PLP_1676526445548.png" alt="Product 5">
+                </a>
+                <p><strong>Product 5</strong></p>
+                <p>$59.99</p>
+              </div>
+            </li>
+            <!-- Product 6 -->
+            <li class="splide__slide">
+              <div class="card">
+                <a href="#">
+                  <img src="images/OKRA(BHINDI)-PDP.jpg_1723792162236.jpg" alt="Product 6">
+                </a>
+                <p><strong>Product 6</strong></p>
+                <p>$69.99</p>
+              </div>
+            </li>
+            <!-- Product 7 -->
+            <li class="splide__slide">
+              <div class="card">
+                <a href="#">
+                  <img src="images/ONION-PDP.jpg_1723792087101.jpg" alt="Product 7">
+                </a>
+                <p><strong>Product 7</strong></p>
+                <p>$79.99</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- Shop Now Button -->
+     
+    </section>
+  </section>
+  <!-- Products Section -->
+
+<section class="banner_slider">
+  <div class="comp-container">
+    <div class="sliider">
+      <div class="splide" id="your-slider">
+        <div class="splide__track">
+          <ul class="splide__list">
+            <li class="splide__slide">
+              <img src="images/HERO BANNER.png" alt="Slide 1">
+            </li>
+            <li class="splide__slide">
+              <img src="images/HERO BANNER.png" alt="Slide 2">
+            </li>
+            <li class="splide__slide">
+              <img src="images/HERO BANNER.png" alt="Slide 3">
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="comp-container">
+    <section class="slider-container">
+      <h2>Hot Deals Products</h2>
+      <!-- Splide Slider Markup -->
+      <div class="splide name_slifer" id="nameset">
+        <div class="splide__track">
+          <ul class="splide__list">
+            <!-- Product 1 -->
+            <li class="splide__slide">
+              <div class="card">
+                <a href="#">
+                  <img src="images/green_chilli.png" alt="Product 1">
+                </a>
+                <p><strong>Product 1</strong></p>
+                <div class="ad">
+                  <p>$19.99</p>
+                  <div class="couters">
+                    <div class="couters">
+                    <button class="add-button">Add</button>
+          <div class="quantity-controls">
+              <button class="quantity-btn minus-btn">-</button>
+              <span class="count">1</span>
+              <button class="quantity-btn plus-btn">+</button>
+          </div>
+        </div>
+        </div>
+                </div>
+              </div>
+            </li>
+            <!-- Product 2 -->
+            <li class="splide__slide">
+              <div class="card">
+                <a href="#">
+                  <img src="images/BANANA-PDP.jpg_1723792764773.jpg" alt="Product 2">
+                </a>
+                <p><strong>Product 2</strong></p>
+                <div class="ad">
+                  <p>$19.99</p>
+                  <div class="couters">
+                  <div class="couters">
+                  <button class="add-button">Add</button>
+        <div class="quantity-controls">
+            <button class="quantity-btn minus-btn">-</button>
+            <span class="count">1</span>
+            <button class="quantity-btn plus-btn">+</button>
+        </div>
+      </div>
+      </div>
+                </div>
+              </div>
+            </li>
+            <!-- Product 3 -->
+            <li class="splide__slide">
+              <div class="card">
+                <a href="#">
+                  <img src="images/LowCreamMilk(MadeFrombuffaloMilk).jpeg_1719231543883.jpeg" alt="Product 3">
+                </a>
+                <p><strong>Product 3</strong></p>
+                <div class="ad">
+                  <p>$19.99</p>
+                  <div class="couters">
+                  <button class="add-button">Add</button>
+        <div class="quantity-controls">
+            <button class="quantity-btn minus-btn">-</button>
+            <span class="count">1</span>
+            <button class="quantity-btn plus-btn">+</button>
+        </div>
+      </div>
+                </div>
+              </div>
+            </li>
+            <!-- Product 4 -->
+            <li class="splide__slide">
+              <div class="card">
+                <a href="#">
+                  <img src="images/NMR honey 450 - PDP.jpg" alt="Product 4">
+                </a>
+                <p><strong>Product 4</strong></p>
+                <div class="ad">
+                  <p>$19.99</p>
+                  <div class="couters">
+                  <button class="add-button">Add</button>
+        <div class="quantity-controls">
+            <button class="quantity-btn minus-btn">-</button>
+            <span class="count">1</span>
+            <button class="quantity-btn plus-btn">+</button>
+        </div>
+      </div>
+                </div>
+              </div>
+            </li>
+            <!-- Product 5 -->
+            <li class="splide__slide">
+              <div class="card">
+                <a href="#">
+                  <img src="images/Carrot-Red-PLP_1676526445548.png" alt="Product 5">
+                </a>
+                <p><strong>Product 5</strong></p>
+                <div class="ad">
+                  <p>$19.99</p>
+                  <div class="couters">
+                  <button class="add-button">Add</button>
+        <div class="quantity-controls">
+            <button class="quantity-btn minus-btn">-</button>
+            <span class="count">1</span>
+            <button class="quantity-btn plus-btn">+</button>
+        </div>
+      </div>
+                </div>
+              </div>
+            </li>
+            <!-- Product 6 -->
+            <li class="splide__slide">
+              <div class="card">
+                <a href="#">
+                  <img src="images/OKRA(BHINDI)-PDP.jpg_1723792162236.jpg" alt="Product 6">
+                </a>
+                <p><strong>Product 6</strong></p>
+                <div class="ad">
+                  <p>$19.99</p>
+                  <div class="couters">
+                  <button class="add-button">Add</button>
+        <div class="quantity-controls">
+            <button class="quantity-btn minus-btn">-</button>
+            <span class="count">1</span>
+            <button class="quantity-btn plus-btn">+</button>
+        </div>
+      </div>
+                </div>
+              </div>
+            </li>
+            <!-- Product 7 -->
+            <li class="splide__slide">
+              <div class="card">
+                <a href="#">
+                  <img src="images/ONION-PDP.jpg_1723792087101.jpg" alt="Product 7">
+                </a>
+                <p><strong>Product 7</strong></p>
+                <div class="ad">
+                  <p>$19.99</p>
+                  <div class="couters">
+                  <button class="add-button">Add</button>
+        <div class="quantity-controls">
+            <button class="quantity-btn minus-btn">-</button>
+            <span class="count">1</span>
+            <button class="quantity-btn plus-btn">+</button>
+        </div>
+      </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- Shop Now Button -->
+     
+    </section>
+  </section>
+
+  <section class="comp-container">
+    <h2 class="cat_head">Farm to Home, Every Day Online Milk</h2>
+    <section class="slider-container">
+      <!-- Splide Slider Markup -->
+      <div class="splide name_slifer" id="setset">
+        <div class="splide__track">
+          <ul class="splide__list">
+            <!-- Product 1 -->
+            <li class="splide__slide">
+              <div class="sitnam">
+                <a href="#">
+                  <img src="images/Mask Group 30649@3x_1675853575529.webp" alt="Product 1">
+                  <p>Milk collection from healthy cattle</p>
+                </a>
+              </div>
+            </li>
+            <!-- Product 2 -->
+            <li class="splide__slide">
+              <div class="sitnam">
+                <a href="#">
+                  <img src="images/del.webp" alt="Product 2">
+                  <p>Home delivery by 7 am</p>
+                </a>
+                
+              </div>
+            </li>
+            <!-- Product 3 -->
+            <li class="splide__slide">
+              <div class="sitnam">
+                <a href="#">
+                  <img src="images/hm.webp" alt="Product 3">
+                  <p>Quality tested for 100+ common adulterants</p>
+                </a>
+                
+              </div>
+            </li>
+            <!-- Product 4 -->
+            
+          </ul>
+        </div>
+      </div>
+      <!-- Shop Now Button -->
+     
+    </section>
+  </section>
+
+  <!-- Cart Offcanvas Sidebar -->
+
+  <div class="foot_cart d-lg-none" data-bs-toggle="offcanvas"
+    data-bs-target="#cartSidebar" aria-controls="cartSidebar">
+        <div class="up_foot">
+            <div class="dala_ppyl">
+                <button class="btn btn-outline-light me-2" >
+                                <i class="bi bi-cart"></i> Cart
+            </button>
+            <div class="bani_runn"> 
+                <span>1 itme</span>      
+                <span>₹ 50</span>  
+            </div> 
+            </div> 
+            <div class="call_side">
+                <p>View Cart</p>
+            </div>
+        </div>
+    </div>
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2023 Milk Company. All rights reserved.</p>
+    <ul>
+      <li><a href="#terms">Terms & Conditions</a></li>
+      <li><a href="#privacy">Privacy Policy</a></li>
+      <li><a href="#contact">Contact Us</a></li>
+    </ul>
+  </footer>
+
+  <!-- Login Functionality Scripts -->
+  <script
+  src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+></script>
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>

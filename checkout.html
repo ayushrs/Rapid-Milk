@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rapid</title>
+    <!-- Google Fonts -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css">
+    <!-- GSAP Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+
+
+</head>
+<style>
+    .xstRP {
+        font-size: 1.3rem;
+        line-height: 1.2;
+        font-weight: 400;
+        margin: 0px;
+        color: rgb(28, 28, 28);
+        text-align: left;
+    }
+
+    h2 {
+        margin-bottom: 10px;
+    }
+
+    .accordion {
+        background-color: #f1f1f1;
+        cursor: pointer;
+        padding: 15px;
+        border: none;
+        outline: none;
+        width: 100%;
+        transition: background-color 0.3s ease;
+        border-radius: 5px;
+        margin-bottom: 5px;
+    }
+
+    .accordion:hover {
+        background-color: #ddd;
+    }
+
+    .panel {
+        display: none;
+        padding: 15px;
+        background-color: white;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+
+    .pay-now {
+        background-color: #ccc;
+        padding: 15px;
+        text-align: center;
+        border-radius: 5px;
+        cursor: not-allowed;
+    }
+
+    .item {
+        display: flex;
+        align-items: center;
+        margin: 10px 0;
+    }
+
+    .item img {
+        width: 50px;
+        height: 50px;
+        margin-right: 10px;
+    }
+
+    .address,
+    .cart {
+        margin-bottom: 20px;
+    }
+
+    .link {
+        color: green;
+        cursor: pointer;
+    }
+
+    .iXVkST {
+        line-height: 1.5;
+        margin: 0px 0px 1rem;
+        font-weight: 500;
+        font-size: 1rem;
+        color: rgb(54, 54, 54);
+    }
+    .pay_images img {
+    width: 40px;
+    gap: 17px;
+    display: flex;
+}
+</style>
+
+<body>
+    <!-- Header Section -->
+    <nav class="navbar navbar-expand-lg navbar-dark naves">
+        <div class="container-fluid">
+            <div class="head_content fluxx">
+                <a class="navbar-brand" href="index.html">Rapid Milk</a>
+
+            </div>
+        </div>
+    </nav>
+
+
+
+
+    <!-- //////////////////////Header Ends -->
+    <section class="checkout mt-5">
+        <div class="comp-container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="payment-methods">
+                        <h2>Select Payment Method</h2>
+
+                        <button class="accordion xstRP">Wallets</button>
+                        <div class="panel">
+                            <p><img src="https://via.placeholder.com/30" alt="Mobikwik"> Mobikwik <span
+                                    class="link">LINK</span></p>
+                        </div>
+
+                        <!-- <button class="accordion xstRP">Add credit or debit cards</button>
+                        <div class="panel">
+                            <div class="card_details">
+                                <p class="sc-1hez2tp-0 AddCardTile__CardName-sc-7w54x2-2 iXVkST">Add Debit / Credit /
+                                    ATM Card</p>
+                                <div class="pay_images">
+                                    <div
+                                        class="LogoRail__LogoRailSection-sc-1oaympr-0 eENJTD AddCardTile__LogoRailWrapper-sc-7w54x2-5 dqGnMj d-flex gap-2">
+                                        <div height="2.5rem" width="4rem"
+                                            class="sc-s1isp7-1 AFCcw LogoRail__CardLogo-sc-1oaympr-1 gkPcXq">
+                                            <div src="" class="sc-s1isp7-3 cVOEqG"></div><img alt="card-image"
+                                                src="https://b.zmtcdn.com/payments/card-logos/visa_v2.png"
+                                                loading="lazy" class="sc-s1isp7-5 jQwYOW">
+                                        </div>
+                                        <div height="2.5rem" width="4rem"
+                                            class="sc-s1isp7-1 AFCcw LogoRail__CardLogo-sc-1oaympr-1 gkPcXq">
+                                            <div src="" class="sc-s1isp7-3 cVOEqG"></div><img alt="card-image"
+                                                src="https://b.zmtcdn.com/payments/card-logos/mastercard_v2.png"
+                                                loading="lazy" class="sc-s1isp7-5 jQwYOW">
+                                        </div>
+                                        <div height="2.5rem" width="4rem"
+                                            class="sc-s1isp7-1 AFCcw LogoRail__CardLogo-sc-1oaympr-1 gkPcXq">
+                                            <div src="" class="sc-s1isp7-3 cVOEqG"></div><img alt="card-image"
+                                                src="https://b.zmtcdn.com/payments/card-logos/amex_v2.png"
+                                                loading="lazy" class="sc-s1isp7-5 jQwYOW">
+                                        </div>
+                                        <div height="2.5rem" width="4rem"
+                                            class="sc-s1isp7-1 AFCcw LogoRail__CardLogo-sc-1oaympr-1 gkPcXq">
+                                            <div src="" class="sc-s1isp7-3 cVOEqG"></div><img alt="card-image"
+                                                src="https://b.zmtcdn.com/payments/card-logos/rupay_v2.png"
+                                                loading="lazy" class="sc-s1isp7-5 jQwYOW">
+                                        </div>
+                                        <div height="2.5rem" width="4rem"
+                                            class="sc-s1isp7-1 AFCcw LogoRail__CardLogo-sc-1oaympr-1 gkPcXq">
+                                            <div src="" class="sc-s1isp7-3 cVOEqG"></div><img alt="card-image"
+                                                src="https://b.zmtcdn.com/payments/logos/a30393d22721bb8c560ffd8cc1d23d9b1694117849.png"
+                                                loading="lazy" class="sc-s1isp7-5 jQwYOW">
+                                        </div>
+                                        <div height="2.5rem" width="4rem"
+                                            class="sc-s1isp7-1 AFCcw LogoRail__CardLogo-sc-1oaympr-1 gkPcXq">
+                                            <div src="" class="sc-s1isp7-3 cVOEqG"></div><img alt="card-image"
+                                                src="https://b.zmtcdn.com/payments/card-logos/diner_club_v2.png"
+                                                loading="lazy" class="sc-s1isp7-5 jQwYOW">
+                                        </div>
+                                        <div height="2.5rem" width="4rem"
+                                            class="sc-s1isp7-1 AFCcw LogoRail__CardLogo-sc-1oaympr-1 gkPcXq">
+                                            <div src="" class="sc-s1isp7-3 cVOEqG"></div><img alt="card-image"
+                                                src="https://b.zmtcdn.com/payments/logos/card_v3.png" loading="lazy"
+                                                class="sc-s1isp7-5 jQwYOW">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pay_fors">
+                                    
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="accordion xstRP">Netbanking</button>
+                        <div class="panel">
+                            <p>Select your bank for net banking.</p>
+                        </div>
+
+                        <button class="accordion xstRP">Add new UPI ID</button>
+                        <div class="panel">
+                            <p>Enter your UPI ID.</p>
+                        </div> -->
+
+                        <button class="accordion xstRP" >Cash</button>
+                        <div class="panel">
+                            <p>Cash on delivery is not applicable for first orders below ₹100.</p>
+                        </div>
+
+                        <!-- <button class="accordion xstRP">Pay Later</button>
+                        <div class="panel">
+                            <p>Choose pay later options.</p>
+                        </div> -->
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="order-summary">
+                        <h2 class="checkout-step__name">Delivery Address</h2>
+                        <p class="address">Home: Floor df, 66, Gayatri Nagar, Jaipur</p>
+
+                        <h3>My Cart (1 item)</h3>
+                        <div class="cart">
+                            <div class="item">
+                                <img src="https://via.placeholder.com/50" alt="Product">
+                                <div>100 g - ₹56</div>
+                            </div>
+                        </div>
+
+                        <div class="pay-now">Pay Now</div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+    </section>
+
+    <!-- Cart Offcanvas Sidebar -->
+
+
+    <!-- Footer -->
+
+
+    <!-- Login Functionality Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        const acc = document.querySelectorAll('.accordion');
+        acc.forEach(button => {
+            button.addEventListener('click', function () {
+                this.classList.toggle('active');
+                const panel = this.nextElementSibling;
+                panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
+            });
+        });
+    </script>
+</body>
+
+</html>

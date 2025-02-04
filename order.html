@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rapid</title>
+  <!-- Google Fonts -->
+  <link
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+  rel="stylesheet"
+/>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
+    rel="stylesheet"
+  />
+  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css">
+  <!-- GSAP Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <link rel="stylesheet" href="styles.css">
+
+
+</head>
+<body>
+  <!-- Header Section -->
+  <nav class="navbar navbar-expand-lg navbar-dark naves">
+    <div class="container-fluid">
+      <div class="head_content fluxx">
+        <a class="navbar-brand" href="index.html">Rapid Milk</a>
+      
+      </button>
+      <div class="address_menu">
+        <h4 class="jag_rit">Delivery In</h4>
+        <div class="truncate-text" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <span class="nii_mantri" >66, shri ram colony jamdoli haipur name and the local server is the name and the local server and the name nad the local server</span>
+            <span _ngcontent-lua-c47="" id="triangle-up"></span>
+        </div>
+    </div>
+      <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+        
+        
+        
+      </div>
+      <div class="loggs_buttns">
+        <!-- In your header navigation, e.g., next to the Login/Signup button -->
+<div class="d-flex align-items-center">
+  <button class="btn btn-outline-light me-2 d-none d-lg-block" data-bs-toggle="offcanvas" data-bs-target="#cartSidebar" aria-controls="cartSidebar">
+    <i class="bi bi-cart"></i> Cart
+  </button>
+  <button class="btn-light btn-login" onclick="openLoginModal()">Login/Signup</button>
+</div>
+
+      </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Login/Signup Modal with Integrated Login Functionality -->
+  <div id="loginModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeLoginModal()">&times;</span>
+      <div class="container">
+        <!-- Step 1: Enter Mobile Number -->
+        <div class="step active" id="step1">
+          <h1>Welcome to
+            <br> Rapid Milk 🐄</h1>
+          <div class="form-group">
+            <input type="tel" id="mobile" placeholder="Enter Mobile Number" maxlength="10" />
+          </div>
+          <button class="btn" onclick="sendOTP()">Send OTP</button>
+        </div>
+        <!-- Step 2: Verify OTP -->
+        <div class="step" id="step2">
+          <h1>Verify OTP 🔒</h1>
+          <div class="otp-inputs">
+            <input type="text" maxlength="1" oninput="moveNext(1)" />
+            <input type="text" maxlength="1" oninput="moveNext(2)" />
+            <input type="text" maxlength="1" oninput="moveNext(3)" />
+            <input type="text" maxlength="1" oninput="moveNext(4)" />
+          </div>
+          <button class="btn" onclick="verifyOTP()">Verify</button>
+        </div>
+        <!-- Step 3: Complete Profile -->
+        <div class="step" id="step3">
+          <h1>Complete Profile 👤</h1>
+          <div class="form-group">
+            <input type="text" id="name" placeholder="Full Name" />
+          </div>
+          <div class="form-group">
+            <input type="email" id="email" placeholder="Email Address" />
+          </div>
+          <button class="btn" onclick="submitDetails()">Continue</button>
+        </div>
+        <!-- Step 4: Products List (Optional) -->
+        <div class="step" id="step4">
+          <h1>Fresh Products 🥦</h1>
+          <div class="products-grid" id="productsGrid"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="cartSidebar" aria-labelledby="cartSidebarLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="cartSidebarLabel">Your Cart</h5>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <!-- Cart Items -->
+      <div id="cartItems">
+        <!-- Example Cart Item -->
+        <div class="d-flex align-items-center mb-3 border-bottom pb-2">
+          <img src="images/LowCreamMilk(MadeFrombuffaloMilk).jpeg_1719231543883.jpeg" alt="Product" class="me-2" style="width: 50px; height: 50px;">
+          <div class="flex-grow-1">
+            <h6 class="mb-0">Product Name</h6>
+            <small>$19.99</small>
+          </div>
+          <div class="couters">
+            <button class="add-button">Add</button>
+  <div class="quantity-controls">
+      <button class="quantity-btn minus-btn">-</button>
+      <span class="count">1</span>
+      <button class="quantity-btn plus-btn">+</button>
+  </div>
+  </div>
+          <button class="btn btn-sm btn-danger ms-2">&times;</button>
+        </div>
+        <div class="d-flex align-items-center mb-3 border-bottom pb-2">
+          <img src="images/LowCreamMilk(MadeFrombuffaloMilk).jpeg_1719231543883.jpeg" alt="Product" class="me-2" style="width: 50px; height: 50px;">
+          <div class="flex-grow-1">
+            <h6 class="mb-0">Product Name</h6>
+            <small>$19.99</small>
+          </div>
+          <div class="couters">
+            <button class="add-button">Add</button>
+  <div class="quantity-controls">
+      <button class="quantity-btn minus-btn">-</button>
+      <span class="count">1</span>
+      <button class="quantity-btn plus-btn">+</button>
+  </div>
+  </div>
+          <button class="btn btn-sm btn-danger ms-2">&times;</button>
+        </div>
+        <!-- Repeat for other items as needed -->
+      </div>
+      <!-- Cart Summary -->
+      <div class="addser">
+        <img src="images/light.webp" alt="">
+        <div class="plac">
+          <h6>Home</h6>
+          <p class="hppBoz">66. shri ram colony, Jamdoli Jaipur</p>
+          <div class="AddressListItem__EditIcon-sc-wi2msz-7 eiUMmD" data-bs-toggle="modal" data-bs-target="#secoundModal"></div>
+        </div>
+      </div>
+      <div class="mt-4">
+        <h6>Total: <span id="cartTotal">₹200.00</span></h6>
+        <a href="checkout.html">
+        <button class="btn btn-primary w-100">Checkout</button>
+          </a>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ///////////////Address modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Address</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="saved_Address">
+            <h4>
+              Your saved address
+            </h4>
+            <div class="addser">
+              <img src="images/light.webp" alt="">
+              <div class="plac">
+                <h6>Home</h6>
+                <p class="hppBoz">66. shri ram colony, Jamdoli Jaipur</p>
+                <div class="AddressListItem__EditIcon-sc-wi2msz-7 eiUMmD" data-bs-toggle="modal" data-bs-target="#secoundModal"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>  
+  
+  <div class="modal fade" id="secoundModal" tabindex="-1" aria-labelledby="secoundModalLabel" aria-hidden="true">
+    <div class="modal-dialog custom-modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="secoundModalLabel">Details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="new_">
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="panch_map">
+                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4220.818330232517!2d75.77053207597118!3d26.894767860860487!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396db46813611413%3A0xd1fce493da88b6e4!2sFineoutput!5e1!3m2!1sen!2sin!4v1738664791749!5m2!1sen!2sin" style="border:0; height: 100%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <span>
+                  Enter complete address
+                </span>
+                <div class="inside_frm">
+                  <form action="#">
+                    <div class="form-group venum">
+                      <label for="flat" class="ioloWN">
+                        Flat / House no. / Building Name
+                      </label>
+                      <input type="number" placeholder="">
+                      <label for="floor" class="ioloWN">
+                        Floor (optional)
+                      </label>
+                      <input type="number" placeholder="">
+                      <label for="area" class="ioloWN">
+                        Area / Sector / Locality
+                      </label>
+                      <input type="number" placeholder="">
+                      <label for="name" class="ioloWN">
+                        Name
+                      </label>
+                      <input type="text" placeholder="">
+                      <label for="number" class="ioloWN">
+                        Mobile Number
+                      </label>
+                      <input type="number" placeholder="">
+                      <div class="save_btns">
+                        <button type="button" class="btn btn-sucess anit mt-3">
+                          Save Address
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div> 
+
+  <!-- Home Page -->
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <!-- Sidebar Navigation -->
+      <nav class="col-md-2 d-md-block sidebar py-4 menu_side">
+        <ul class="nav">
+          <li class="nav-item mb-3">
+            <a class="nav-link active"  data-bs-toggle="modal" data-bs-target="#calendarModal" href="#">Quick Calendar</a>
+          </li>
+          <li class="nav-item mb-3">
+            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#walletModal">Wallet</a>
+          </li>
+          <li class="nav-item mb-3">
+            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#dateModal">Vacation</a>
+          </li>
+          <li class="nav-item mb-3">
+            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#userModal">Customer Profile</a>
+          </li>
+          <!-- Add more sidebar items as needed -->
+        </ul>
+      </nav>
+
+      <!-- Main Content Area -->
+      <main class="col-md-10 content-area">
+        
+        <!-- Welcome Section -->
+         <div class="comp-container">
+         <div class="row">
+            <div class="col-lg-8">
+              <div class="sliider">
+                <div class="splide" id="my-slider">
+                  <div class="splide__track">
+                    <ul class="splide__list">
+                      <li class="splide__slide">
+                        <img src="images/4PE4WEBSITEHEROBANNER.jpg_1724396937712.jpg" alt="Slide 1">
+                      </li>
+                      <li class="splide__slide">
+                        <img src="images/4PE4WEBSITEHEROBANNER.jpg_1724396937712.jpg" alt="Slide 2">
+                      </li>
+                      <li class="splide__slide">
+                        <img src="images/4PE4WEBSITEHEROBANNER.jpg_1724396937712.jpg" alt="Slide 3">
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+                <div class="mb-4">
+                    <h2>Welcome to Rapid Milk Dashboard</h2>
+                    <p>Select an option from the sidebar to get started.</p>
+                  </div>
+          
+                  <!-- Quick Calendar Section -->
+                  <section class="mb-4">
+                    <h4>Quick Calendar</h4>
+                    <div class="d-flex flex-wrap">
+                      <button class="btn btn-outline-secondary m-1">Mon</button>
+                      <button class="btn btn-outline-secondary m-1">Tue</button>
+                      <button class="btn btn-outline-secondary m-1">Wed</button>
+                      <button class="btn btn-outline-secondary m-1">Thu</button>
+                      <button class="btn btn-outline-secondary m-1">Fri</button>
+                      <button class="btn btn-outline-secondary m-1">Sat</button>
+                      <button class="btn btn-outline-secondary m-1">Sun</button>
+                      <button class="btn btn-primary m-1">Add Item to Calendar</button>
+                      <button class="btn btn-warning m-1">Update Vacation</button>
+                    </div>
+                  </section>
+          
+                  <!-- Wallet Section -->
+                  <section class="mb-4">
+                    <h4>Wallet</h4>
+                    <div class="card p-3">
+                      <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                          <h5>₹0 Wallet Balance</h5>
+                          <button class="btn btn-sm btn-outline-success">Add Money</button>
+                          <button class="btn btn-sm btn-outline-primary">Recharge Now</button>
+                        </div>
+                        <div>
+                          <i class="bi bi-wallet2" style="font-size: 2rem;"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
+
+                  
+          
+                  <!-- Orders / Subscription Section -->
+                  <section class="mb-4">
+                    <h4>Orders &amp; Subscriptions</h4>
+                    <div class="card p-3">
+                      <p>Click on a date to view or add products for the selected date.</p>
+                      <button class="btn btn-primary">View Order Details</button>
+                    </div>
+                  </section>
+          
+            </div>
+            <div class="col-lg-4">
+                <section class="mb-4">
+                    <h4>Product Catalog <small>(See All Trials)</small></h4>
+                    <div class="row">
+                      <!-- Example Product Card -->
+                      <div class="col">
+                        <div class="ord_crd">
+                            <div class="discount">13% OFF</div>
+                            <div class="ord_crd_outer d-flex">
+                                <div class="ord_mg">
+                                    <img src="images/width_400.png" alt="A2 Cow Milk Bottle">
+                                </div>
+                                <div class="ord_crd_info">
+                                    <div class="title">A2 Cow Milk- Bottle</div>
+                                    <div class="subtitle">A2 Cow Milk- Bottle</div>
+                                    <div class="price">
+                                        <del>₹112</del>
+                                        <span>₹97</span> 1 ltr Pack
+                                      </div>
+                                </div>
+                            
+                        </div>
+                            <div class="availability">Next Available On 4th Feb 2025</div>
+                            <div class="buttons">
+                              <button class="btn buy">&#128197; Buy One time</button>
+                              <button class="btn subscribe">&#128240; Subscribe</button>
+                            </div>
+                          </div>
+                      </div>
+                      <!-- Repeat product cards as needed -->
+                    </div>
+                  </section>
+            </div>
+         </div>
+        </div>
+        <!-- Product Catalog Section -->
+        
+
+        <!-- Notifications Section -->
+        
+
+        <!-- Additional sections (e.g., Delivery History, Invoices) can be added here -->
+      </main>
+    </div>
+  </div>
+  <div class="modal fade" id="calendarModal" tabindex="-1" aria-labelledby="calendarModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="calendarModalLabel">Event Calendar</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <!-- Calendar will be rendered here -->
+          <div id="calendar"></div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Cart Offcanvas Sidebar -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="cartSidebar" aria-labelledby="cartSidebarLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="cartSidebarLabel">Your Cart</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <!-- Cart Items -->
+    <div id="cartItems">
+      <!-- Example Cart Item -->
+      <div class="d-flex align-items-center mb-3 border-bottom pb-2">
+        <img src="images/LowCreamMilk(MadeFrombuffaloMilk).jpeg_1719231543883.jpeg" alt="Product" class="me-2" style="width: 50px; height: 50px;">
+        <div class="flex-grow-1">
+          <h6 class="mb-0">Product Name</h6>
+          <small>$19.99</small>
+        </div>
+        <button class="btn btn-sm btn-danger ms-2">&times;</button>
+      </div>
+      <!-- Repeat for other items as needed -->
+    </div>
+    <!-- Cart Summary -->
+    <div class="mt-4">
+      <h6>Total: <span id="cartTotal">$0.00</span></h6>
+      <button class="btn btn-primary w-100">Checkout</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="walletModal" tabindex="-1" aria-labelledby="walletModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content p-3">
+          <div class="modal-header">
+              <div class="wallet-icon">
+                  <img src="https://cdn-icons-png.flaticon.com/512/3148/3148313.png" width="25">
+              </div>
+              <div class="ms-auto">
+                  <h6 class="wallet-balance">₹0</h6>
+                  <p class="text-muted mb-0">Wallet Balance</p>
+              </div>
+              <button type="button" class="btn-close ms-2" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          
+          <div class="modal-body text-center">
+              <button class="btn btn-outline-primary">+ Add Money</button>
+              
+              <div class="amount-box mt-3">
+                  <button onclick="adjustAmount(-100)">-100</button>
+                  <input type="text" id="amountInput" value="100">
+                  <button onclick="adjustAmount(100)">+100</button>
+              </div>
+
+              <button class="recharge-btn mt-3">Recharge Now</button>
+          </div>
+
+          <div class="modal-footer">
+              <h6>Transactions</h6>
+              <button class="btn btn-light btn-sm">Filter</button>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+<div class="modal fade" id="dateModal" tabindex="-1" aria-labelledby="dateModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="dateModalLabel">Select Date Range</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <form>
+                  <!-- Start Date -->
+                  <div class="mb-3">
+                      <label for="startDate" class="form-label">Start Date</label>
+                      <input type="date" class="form-control" id="startDate">
+                  </div>
+
+                  <!-- End Date -->
+                  <div class="mb-3">
+                      <label for="endDate" class="form-label">End Date</label>
+                      <input type="date" class="form-control" id="endDate">
+                  </div>
+              </form>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-success">Confirm Dates</button>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="userModal" tabindex="-1" aria-labelledby="userModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="userModalLabel">User Details</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              
+              <!-- User Details Section -->
+              <div class="p-3">
+                  <div class="row mb-3">
+                      <div class="col-md-4"><strong>Name:</strong></div>
+                      <div class="col-md-6">
+                          <span id="nameText">John Doe</span> 
+                          <input type="text" id="nameInput" class="form-control edit-input" value="John Doe">
+                      </div>
+                      <div class="col-md-2"><button class="btn btn-primary btn-sm" onclick="toggleEdit('name')">Edit</button></div>
+                  </div>
+
+                  <div class="row mb-3">
+                      <div class="col-md-4"><strong>Email:</strong></div>
+                      <div class="col-md-6">
+                          <span id="emailText">john.doe@example.com</span> 
+                          <input type="email" id="emailInput" class="form-control edit-input" value="john.doe@example.com">
+                      </div>
+                      <div class="col-md-2"><button class="btn btn-primary btn-sm" onclick="toggleEdit('email')">Edit</button></div>
+                  </div>
+
+                  <div class="row mb-3">
+                      <div class="col-md-4"><strong>Phone:</strong></div>
+                      <div class="col-md-6">
+                          <span id="phoneText">+91 9876543210</span> 
+                          <input type="text" id="phoneInput" class="form-control edit-input" value="+91 9876543210">
+                      </div>
+                      <div class="col-md-2"><button class="btn btn-primary btn-sm" onclick="toggleEdit('phone')">Edit</button></div>
+                  </div>
+
+                  <div class="row mb-3">
+                      <div class="col-md-4"><strong>Address:</strong></div>
+                      <div class="col-md-6">
+                          <span id="addressText">123, ABC Street, City</span> 
+                          <input type="text" id="addressInput" class="form-control edit-input" value="123, ABC Street, City">
+                      </div>
+                      <div class="col-md-2"><button class="btn btn-primary btn-sm" onclick="toggleEdit('address')">Edit</button></div>
+                  </div>
+
+                  <!-- Save Changes Button (Initially Hidden) -->
+                  <button id="saveBtn" class="btn btn-success mt-3" style="display: none;" onclick="saveChanges()">Save Changes</button>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+  <!-- Footer -->
+  <div class="foot_cart d-lg-none" data-bs-toggle="offcanvas"
+    data-bs-target="#cartSidebar" aria-controls="cartSidebar">
+        <div class="up_foot">
+            <div class="dala_ppyl">
+                <button class="btn btn-outline-light me-2" >
+                                <i class="bi bi-cart"></i> Cart
+            </button>
+            <div class="bani_runn"> 
+                <span>1 itme</span>      
+                <span>₹ 50</span>  
+            </div> 
+            </div> 
+            <div class="call_side">
+                <p>View Cart</p>
+            </div>
+        </div>
+    </div>
+
+  <!-- Login Functionality Scripts -->
+   
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script
+  src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+></script>
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+<script src="script.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Initialize the calendar
+    var calendarEl = document.getElementById('calendar');
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+      initialView: 'dayGridMonth', // Default view
+      headerToolbar: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'dayGridMonth,timeGridWeek,timeGridDay'
+      },
+      events: [
+        {
+          title: 'Event 1',
+          start: '2023-10-07'
+        },
+        {
+          title: 'Event 2',
+          start: '2023-10-14',
+          end: '2023-10-16'
+        },
+        {
+          title: 'Event 3',
+          start: '2023-10-20T10:00:00',
+          end: '2023-10-20T12:00:00'
+        }
+        // Add more events here
+      ],
+      // Callback for date clicks
+      dateClick: function(info) {
+        // Display the clicked date using an alert
+        alert('You clicked on: ' + info.dateStr);
+        // Alternatively, you could log it to the console:
+        // console.log('Clicked on: ' + info.dateStr);
+      }
+    });
+
+    // Render the calendar
+    calendar.render();
+
+    // Optional: Re-render the calendar when the modal is shown
+    var calendarModal = document.getElementById('calendarModal');
+    calendarModal.addEventListener('shown.bs.modal', function () {
+      calendar.render();
+    });
+  });
+
+  function adjustAmount(value) {
+            let amountInput = document.getElementById("amountInput");
+            let amount = parseInt(amountInput.value) || 0;
+            amount = Math.max(0, amount + value); // Prevent negative values
+            amountInput.value = amount;
+        }
+
+        function toggleEdit(field) {
+            // Show input field and hide text span
+            document.getElementById(field + 'Text').style.display = 'none';
+            document.getElementById(field + 'Input').style.display = 'block';
+            document.getElementById('saveBtn').style.display = 'block'; // Show Save button
+        }
+
+        function saveChanges() {
+            // Update the text fields with new values from input fields
+            const fields = ['name', 'email', 'phone', 'address'];
+            fields.forEach(field => {
+                const input = document.getElementById(field + 'Input');
+                document.getElementById(field + 'Text').innerText = input.value;
+                input.style.display = 'none'; // Hide input field
+                document.getElementById(field + 'Text').style.display = 'inline'; // Show updated text
+            });
+
+            // Hide Save button after saving changes
+            document.getElementById('saveBtn').style.display = 'none';
+        }
+</script>
+</body>
+</html>

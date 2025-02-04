@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rapid</title>
+  <!-- Google Fonts -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide.min.css">
+  <!-- GSAP Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <link rel="stylesheet" href="styles.css">
+
+
+</head>
+
+<body>
+  <!-- Header Section -->
+  <nav class="navbar navbar-expand-lg navbar-dark naves">
+    <div class="container-fluid">
+      <div class="head_content fluxx">
+        <a class="navbar-brand" href="index.html">Rapid Milk</a>
+      
+      </button>
+      <div class="address_menu">
+        <h4 class="jag_rit">Delivery In</h4>
+        <div class="truncate-text" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <span class="nii_mantri" >66, shri ram colony jamdoli haipur name and the local server is the name and the local server and the name nad the local server</span>
+            <span _ngcontent-lua-c47="" id="triangle-up"></span>
+        </div>
+    </div>
+      <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+        
+        
+        
+      </div>
+      <div class="loggs_buttns">
+        <!-- In your header navigation, e.g., next to the Login/Signup button -->
+<div class="d-flex align-items-center">
+  <button class="btn btn-outline-light me-2 d-none d-lg-block" data-bs-toggle="offcanvas" data-bs-target="#cartSidebar" aria-controls="cartSidebar">
+    <i class="bi bi-cart"></i> Cart
+  </button>
+  <button class="btn-light btn-login" onclick="openLoginModal()">Login/Signup</button>
+</div>
+
+      </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Login/Signup Modal with Integrated Login Functionality -->
+  <div id="loginModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeLoginModal()">&times;</span>
+      <div class="container">
+        <!-- Step 1: Enter Mobile Number -->
+        <div class="step active" id="step1">
+          <h1>Welcome to
+            <br> Rapid Milk 🐄</h1>
+          <div class="form-group">
+            <input type="tel" id="mobile" placeholder="Enter Mobile Number" maxlength="10" />
+          </div>
+          <button class="btn" onclick="sendOTP()">Send OTP</button>
+        </div>
+        <!-- Step 2: Verify OTP -->
+        <div class="step" id="step2">
+          <h1>Verify OTP 🔒</h1>
+          <div class="otp-inputs">
+            <input type="text" maxlength="1" oninput="moveNext(1)" />
+            <input type="text" maxlength="1" oninput="moveNext(2)" />
+            <input type="text" maxlength="1" oninput="moveNext(3)" />
+            <input type="text" maxlength="1" oninput="moveNext(4)" />
+          </div>
+          <button class="btn" onclick="verifyOTP()">Verify</button>
+        </div>
+        <!-- Step 3: Complete Profile -->
+        <div class="step" id="step3">
+          <h1>Complete Profile 👤</h1>
+          <div class="form-group">
+            <input type="text" id="name" placeholder="Full Name" />
+          </div>
+          <div class="form-group">
+            <input type="email" id="email" placeholder="Email Address" />
+          </div>
+          <button class="btn" onclick="submitDetails()">Continue</button>
+        </div>
+        <!-- Step 4: Products List (Optional) -->
+        <div class="step" id="step4">
+          <h1>Fresh Products 🥦</h1>
+          <div class="products-grid" id="productsGrid"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="cartSidebar" aria-labelledby="cartSidebarLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="cartSidebarLabel">Your Cart</h5>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <!-- Cart Items -->
+      <div id="cartItems">
+        <!-- Example Cart Item -->
+        <div class="d-flex align-items-center mb-3 border-bottom pb-2">
+          <img src="images/LowCreamMilk(MadeFrombuffaloMilk).jpeg_1719231543883.jpeg" alt="Product" class="me-2" style="width: 50px; height: 50px;">
+          <div class="flex-grow-1">
+            <h6 class="mb-0">Product Name</h6>
+            <small>$19.99</small>
+          </div>
+          <div class="couters">
+            <button class="add-button">Add</button>
+  <div class="quantity-controls">
+      <button class="quantity-btn minus-btn">-</button>
+      <span class="count">1</span>
+      <button class="quantity-btn plus-btn">+</button>
+  </div>
+  </div>
+          <button class="btn btn-sm btn-danger ms-2">&times;</button>
+        </div>
+        <div class="d-flex align-items-center mb-3 border-bottom pb-2">
+          <img src="images/LowCreamMilk(MadeFrombuffaloMilk).jpeg_1719231543883.jpeg" alt="Product" class="me-2" style="width: 50px; height: 50px;">
+          <div class="flex-grow-1">
+            <h6 class="mb-0">Product Name</h6>
+            <small>$19.99</small>
+          </div>
+          <div class="couters">
+            <button class="add-button">Add</button>
+  <div class="quantity-controls">
+      <button class="quantity-btn minus-btn">-</button>
+      <span class="count">1</span>
+      <button class="quantity-btn plus-btn">+</button>
+  </div>
+  </div>
+          <button class="btn btn-sm btn-danger ms-2">&times;</button>
+        </div>
+        <!-- Repeat for other items as needed -->
+      </div>
+      <!-- Cart Summary -->
+      <div class="addser">
+        <img src="images/light.webp" alt="">
+        <div class="plac">
+          <h6>Home</h6>
+          <p class="hppBoz">66. shri ram colony, Jamdoli Jaipur</p>
+          <div class="AddressListItem__EditIcon-sc-wi2msz-7 eiUMmD" data-bs-toggle="modal" data-bs-target="#secoundModal"></div>
+        </div>
+      </div>
+      <div class="mt-4">
+        <h6>Total: <span id="cartTotal">₹200.00</span></h6>
+        <a href="checkout.html">
+        <button class="btn btn-primary w-100">Checkout</button>
+          </a>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ///////////////Address modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Address</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="saved_Address">
+            <h4>
+              Your saved address
+            </h4>
+            <div class="addser">
+              <img src="images/light.webp" alt="">
+              <div class="plac">
+                <h6>Home</h6>
+                <p class="hppBoz">66. shri ram colony, Jamdoli Jaipur</p>
+                <div class="AddressListItem__EditIcon-sc-wi2msz-7 eiUMmD" data-bs-toggle="modal" data-bs-target="#secoundModal"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>  
+  
+  <div class="modal fade" id="secoundModal" tabindex="-1" aria-labelledby="secoundModalLabel" aria-hidden="true">
+    <div class="modal-dialog custom-modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="secoundModalLabel">Details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="new_">
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="panch_map">
+                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4220.818330232517!2d75.77053207597118!3d26.894767860860487!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396db46813611413%3A0xd1fce493da88b6e4!2sFineoutput!5e1!3m2!1sen!2sin!4v1738664791749!5m2!1sen!2sin" style="border:0; height: 100%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <span>
+                  Enter complete address
+                </span>
+                <div class="inside_frm">
+                  <form action="#">
+                    <div class="form-group venum">
+                      <label for="flat" class="ioloWN">
+                        Flat / House no. / Building Name
+                      </label>
+                      <input type="number" placeholder="">
+                      <label for="floor" class="ioloWN">
+                        Floor (optional)
+                      </label>
+                      <input type="number" placeholder="">
+                      <label for="area" class="ioloWN">
+                        Area / Sector / Locality
+                      </label>
+                      <input type="number" placeholder="">
+                      <label for="name" class="ioloWN">
+                        Name
+                      </label>
+                      <input type="text" placeholder="">
+                      <label for="number" class="ioloWN">
+                        Mobile Number
+                      </label>
+                      <input type="number" placeholder="">
+                      <div class="save_btns">
+                        <button type="button" class="btn btn-sucess anit mt-3">
+                          Save Address
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div> 
+
+  <!-- Home Page -->
+  <section class="product_detail">
+    <div class="comp-container">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="innsre_detail_mage">
+            <div class="detail_top_mage fluxx">
+              <img id="mainImage" src="images/38481828-b788-4a8a-8ad6-eced75e2203d.jpg" alt="Main Product Image">
+            </div>
+            <di v class="bot_thumb_mage">
+              <div class="splide" id="thumbnail-slider">
+                <div class="splide__track">
+                  <ul class="splide__list">
+                    <li class="splide__slide"><img class="thumb-img"
+                        src="images/38481828-b788-4a8a-8ad6-eced75e2203d.jpg" alt="Thumbnail 1"></li>
+                    <li class="splide__slide"><img class="thumb-img" src="images/green_chilli.png" alt="Thumbnail 2">
+                    </li>
+                    <li class="splide__slide"><img class="thumb-img"
+                        src="images/LowCreamMilk(MadeFrombuffaloMilk).jpeg_1719231543883.jpeg" alt="Thumbnail 3"></li>
+                    <li class="splide__slide"><img class="thumb-img"
+                        src="images/LowCreamMilk(MadeFrombuffaloMilk).jpeg_1719231543883.jpeg" alt="Thumbnail 3"></li>
+                    <li class="splide__slide"><img class="thumb-img"
+                        src="images/LowCreamMilk(MadeFrombuffaloMilk).jpeg_1719231543883.jpeg" alt="Thumbnail 3"></li>
+                    <li class="splide__slide"><img class="thumb-img"
+                        src="images/LowCreamMilk(MadeFrombuffaloMilk).jpeg_1719231543883.jpeg" alt="Thumbnail 3"></li>
+                  </ul>
+                </div>
+              </div>
+            </di>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="prod_main_dets">
+            <div class="upper_det">
+              <span class="iHIlhD">Saras Milk Toned</span>
+              <h2 class="dsuWXl">Saras Toned Fresh Milk</h2>
+              <div class="offer bg-offer-label">
+                <p _ngcontent-lua-c90="" class="text-11" style="margin: 0;">Order via App and get <span
+                    _ngcontent-lua-c90="" class="text-green font-semibold">Upto 40% OFF</span> with&nbsp; </p>
+                <img src="images/VIP Icon.svg" alt="">
+              </div>
+            </div>
+
+            <div class="down_track">
+              <div class="down_left">
+                <span class="dhCxof">500 ml</span>
+                <p class="mrp">MRP ₹26 <br>
+                </p>
+                <span class="ichpwf">(Inclusive of all taxes)</span>
+              </div>
+              <div class="down_right">
+                <div class="couters">
+                  <div class="couters">
+                    <button class="add-button">Add</button>
+                    <div class="quantity-controls">
+                      <button class="quantity-btn minus-btn">-</button>
+                      <span class="count">1</span>
+                      <button class="quantity-btn plus-btn">+</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="down_right">
+                <a href="order.html">
+                    <button class="add-button">Subscribe</button>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="do_coulms">
+              <h4 class="dVYhNR">Why Shop from Rapid Milk</h4>
+              <div class="first-row">
+                <div class="column">
+                  <div class="first-row__icon">
+                    <div width="56" height="56" class="Imagestyles__ImageContainer-sc-1u3ccmn-0 gyuaYV"><img
+                        src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/web/blinkit-promises/10_minute_delivery.png"
+                        alt="express delivery" width="56" height="56" loading="lazy"
+                        style="border-radius: 0px; object-fit: fill; cursor: default;"></div>
+                  </div>
+                  <div class="display--table-cell vertical-align--middle">
+                    <div class="first-row__name  color-black">Superfast Delivery</div>
+                    <div class="first-row__description">Get your order delivered to your doorstep at the earliest from
+                      dark stores near you.</div>
+                  </div>
+                </div>
+                <div class="column">
+                  <div class="first-row__icon">
+                    <div width="56" height="56" class="Imagestyles__ImageContainer-sc-1u3ccmn-0 gyuaYV"><img
+                        src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/web/blinkit-promises/Best_Prices_Offers.png"
+                        alt="best price" width="56" height="56" loading="lazy"
+                        style="border-radius: 0px; object-fit: fill; cursor: default;"></div>
+                  </div>
+                  <div class="display--table-cell vertical-align--middle">
+                    <div class="first-row__name  color-black">Best Prices &amp; Offers</div>
+                    <div class="first-row__description">Best price destination with offers directly from the
+                      manufacturers.</div>
+                  </div>
+                </div>
+                <div class="column">
+                  <div class="first-row__icon">
+                    <div width="56" height="56" class="Imagestyles__ImageContainer-sc-1u3ccmn-0 gyuaYV"><img
+                        src="https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=90/assets/web/blinkit-promises/Wide_Assortment.png"
+                        alt="genuine products" width="56" height="56" loading="lazy"
+                        style="border-radius: 0px; object-fit: fill; cursor: default;"></div>
+                  </div>
+                  <div class="display--table-cell vertical-align--middle">
+                    <div class="first-row__name  color-black">Wide Assortment</div>
+                    <div class="first-row__description">Choose from 5000+ products across food, personal care, household
+                      &amp; other categories.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="comp-container">
+    <section class="slider-container">
+      <h2>Related Products</h2>
+      <!-- Splide Slider Markup -->
+      <div class="splide name_slifer" id="splide-slider">
+        <div class="splide__track">
+          <ul class="splide__list">
+            <!-- Product 1 -->
+            <li class="splide__slide">
+              <div class="card">
+                <a href="#">
+                  <img src="images/green_chilli.png" alt="Product 1">
+                </a>
+                <p><strong>Product 1</strong></p>
+                <p>$19.99</p>
+              </div>
+            </li>
+            <!-- Product 2 -->
+            <li class="splide__slide">
+              <div class="card">
+                <a href="#">
+                  <img src="images/BANANA-PDP.jpg_1723792764773.jpg" alt="Product 2">
+                </a>
+                <p><strong>Product 2</strong></p>
+                <p>$29.99</p>
+              </div>
+            </li>
+            <!-- Product 3 -->
+            <li class="splide__slide">
+              <div class="card">
+                <a href="#">
+                  <img src="images/LowCreamMilk(MadeFrombuffaloMilk).jpeg_1719231543883.jpeg" alt="Product 3">
+                </a>
+                <p><strong>Product 3</strong></p>
+                <p>$39.99</p>
+              </div>
+            </li>
+            <!-- Product 4 -->
+            <li class="splide__slide">
+              <div class="card">
+                <a href="#">
+                  <img src="images/NMR honey 450 - PDP.jpg" alt="Product 4">
+                </a>
+                <p><strong>Product 4</strong></p>
+                <p>$49.99</p>
+              </div>
+            </li>
+            <!-- Product 5 -->
+            <li class="splide__slide">
+              <div class="card">
+                <a href="#">
+                  <img src="images/Carrot-Red-PLP_1676526445548.png" alt="Product 5">
+                </a>
+                <p><strong>Product 5</strong></p>
+                <p>$59.99</p>
+              </div>
+            </li>
+            <!-- Product 6 -->
+            <li class="splide__slide">
+              <div class="card">
+                <a href="#">
+                  <img src="images/OKRA(BHINDI)-PDP.jpg_1723792162236.jpg" alt="Product 6">
+                </a>
+                <p><strong>Product 6</strong></p>
+                <p>$69.99</p>
+              </div>
+            </li>
+            <!-- Product 7 -->
+            <li class="splide__slide">
+              <div class="card">
+                <a href="#">
+                  <img src="images/ONION-PDP.jpg_1723792087101.jpg" alt="Product 7">
+                </a>
+                <p><strong>Product 7</strong></p>
+                <p>$79.99</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- Shop Now Button -->
+     
+    </section>
+  </section>
+  <!-- Cart Offcanvas Sidebar -->
+  
+
+  <!-- Footer -->
+  <!-- <footer>
+    <p>&copy; 2023 Milk Company. All rights reserved.</p>
+    <ul>
+      <li><a href="#terms">Terms & Conditions</a></li>
+      <li><a href="#privacy">Privacy Policy</a></li>
+      <li><a href="#contact">Contact Us</a></li>
+    </ul>
+  </footer> -->
+
+  <!-- Login Functionality Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"></script>
+  <script src="script.js"></script>
+
+</body>
+
+</html>

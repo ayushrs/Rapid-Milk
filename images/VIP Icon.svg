@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="44" height="15" viewBox="0 0 44 15">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_146626" data-name="Rectangle 146626" width="44" height="15" transform="translate(-19659 -6857)" fill="#fff" stroke="#707070" stroke-width="1"/>
+    </clipPath>
+    <clipPath id="clip-path-2">
+      <rect id="Boundary" width="15" height="15" fill="none"/>
+    </clipPath>
+    <linearGradient id="linear-gradient" x1="0.5" y1="1" x2="0.5" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#3f2e70"/>
+      <stop offset="1" stop-color="#201443"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="0.5" y1="1" x2="0.5" y2="0.014" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#b58400"/>
+      <stop offset="0.498" stop-color="#ffda71"/>
+      <stop offset="1" stop-color="#fcae00"/>
+    </linearGradient>
+    <filter id="Ellipse_9">
+      <feOffset input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feFlood flood-opacity="0.424" result="color"/>
+      <feComposite operator="out" in="SourceGraphic" in2="blur"/>
+      <feComposite operator="in" in="color"/>
+      <feComposite operator="in" in2="SourceGraphic"/>
+    </filter>
+    <linearGradient id="linear-gradient-3" x1="0.929" y1="0.6" x2="0.048" y2="0.591" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#ffaf2e"/>
+      <stop offset="0.463" stop-color="#ffecb5"/>
+      <stop offset="1" stop-color="#ffb53b"/>
+    </linearGradient>
+  </defs>
+  <g id="vip_icon" data-name="vip icon" transform="translate(19659 6857)" clip-path="url(#clip-path)">
+    <g id="VIP_Icon-2" data-name="VIP Icon" transform="translate(-19509.006 -6858)">
+      <g id="VIP_Text" data-name="VIP Text" transform="translate(-131.725 3.739)">
+        <path id="Path_28855" data-name="Path 28855" d="M3.846-14.072H6.3l2.717-7.791h.8V-23.6H5.6v1.731h.932L5.284-17.682A5.306,5.306,0,0,0,5.1-16.643H5.045a5.306,5.306,0,0,0-.186-1.039L3.606-21.864h.932V-23.6H.33v1.731h.8Zm6.619,0H14.98V-15.8H13.915v-6.06H14.98V-23.6H10.465v1.731h1.065v6.06H10.465Zm5.687,0h4.515V-15.8H19.6v-1.345H20.96a4.7,4.7,0,0,0,1.492-.2,3.109,3.109,0,0,0,1.878-3.037,3.073,3.073,0,0,0-1.838-3,4.51,4.51,0,0,0-1.6-.213H16.152v1.731h1.065v6.06H16.152ZM19.6-19.013V-21.73h1.052a1.453,1.453,0,0,1,.839.213,1.329,1.329,0,0,1,.466,1.132,1.326,1.326,0,0,1-.506,1.172,1.565,1.565,0,0,1-.839.2Z" transform="translate(-0.33 23.595)" fill="#262623"/>
+      </g>
+      <g id="icon_action_favorite_24px" data-name="icon/action/favorite_24px" transform="translate(-149.993 1)">
+        <rect id="Boundary-2" data-name="Boundary" width="15" height="15" fill="none"/>
+        <g id="Mask_Group_179" data-name="Mask Group 179" clip-path="url(#clip-path-2)">
+          <g id="Crown" transform="translate(1.176 1.177)">
+            <circle id="Ellipse_5" data-name="Ellipse 5" cx="6.324" cy="6.324" r="6.324" fill="url(#linear-gradient)"/>
+            <circle id="Ellipse_6" data-name="Ellipse 6" cx="6.26" cy="6.26" r="6.26" transform="translate(0.096 0.108)" fill="url(#linear-gradient-2)"/>
+            <g data-type="innerShadowGroup">
+              <circle id="Ellipse_9-2" data-name="Ellipse 9" cx="5.681" cy="5.681" r="5.681" transform="translate(0.675 0.688)" fill="#2b2313"/>
+              <g transform="matrix(1, 0, 0, 1, -1.18, -1.18)" filter="url(#Ellipse_9)">
+                <circle id="Ellipse_9-3" data-name="Ellipse 9" cx="5.681" cy="5.681" r="5.681" transform="translate(1.85 1.86)" fill="#fff"/>
+              </g>
+            </g>
+            <g id="crown-icon" transform="translate(2.314 3.232)">
+              <path id="Union_1" data-name="Union 1" d="M1.491,6.248a.75.75,0,0,1,.75-.75h3.62a.749.749,0,0,1,.749.75ZM1.84,5.162c-.3,0-.4-.051-.464-.317C1.233,4.215.851,2.839.681,2.214a.448.448,0,0,0-.248-.253c-.339-.128-.5-.369-.4-.646a.5.5,0,0,1,.654-.29.482.482,0,0,1,.24.689c-.017.045-.04.089-.057.126-.016.09.109.165.126.182,1.127,1.144,1.852.928,2.591-.476.12-.331.268-.655.086-.788-.159-.088-.13-.519.1-.667A.493.493,0,0,1,4.38.123a.412.412,0,0,1,.04.634c-.222.2-.069.437.078.788,0,0,.829,2.355,2.6.476v0a.221.221,0,0,0,.076-.269.718.718,0,0,1-.058-.168.443.443,0,0,1,.352-.57.518.518,0,0,1,.582.3.409.409,0,0,1-.285.594c-.326.055-.362.249-.416.481-.138.581-.514,1.907-.645,2.489-.057.248-.163.293-.53.293Z" transform="translate(0 0)" stroke="rgba(0,0,0,0)" stroke-width="1" fill="url(#linear-gradient-3)"/>
+            </g>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
