@@ -50,6 +50,14 @@ a {
     padding: 15px 22px !important;
     font-size: 14px !important;
 }
+    
+.category-card p {
+  font-size: 12px !important;
+}
+.custom-modal {
+  max-width: 100% !important;
+  width: 100% !important;
+}
   }
 
 body {
